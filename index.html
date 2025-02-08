@@ -198,30 +198,40 @@
     .cat-item span {
       font-weight: bold;
     }
-    /* Media Query for Mobile Devices */
+    /* Media Query for Mobile Devices - Further Reduced Sizes */
     @media only screen and (max-width: 600px) {
       .container {
-        margin: 5px;
-        padding: 10px;
+        margin: 2px;
+        padding: 8px;
       }
       header h1 {
-        font-size: 1.8em;
+        font-size: 1.6em;
       }
       .clock {
         font-size: 0.8em;
       }
       .week-navigation button {
-        padding: 6px 10px;
-        font-size: 12px;
+        padding: 4px 8px;
+        font-size: 11px;
       }
       .controls button, .controls select {
-        padding: 6px 8px;
-        font-size: 12px;
+        padding: 4px 6px;
+        font-size: 11px;
       }
       table th, table td {
-        padding: 5px;
+        padding: 4px;
         font-size: 10px;
         min-width: 40px;
+      }
+      .modal-content {
+        padding: 12px;
+      }
+      .modal-content input, .modal-content select {
+        padding: 6px;
+      }
+      .modal-content button.submit-btn {
+        padding: 8px;
+        font-size: 14px;
       }
     }
   </style>
