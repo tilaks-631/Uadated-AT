@@ -198,40 +198,40 @@
     .cat-item span {
       font-weight: bold;
     }
-    /* Media Query for Mobile Devices - Further Reduced Sizes */
+    /* Media Query for Mobile Devices - Further Reduced by ~20% */
     @media only screen and (max-width: 600px) {
       .container {
         margin: 2px;
-        padding: 8px;
-      }
-      header h1 {
-        font-size: 1.6em;
-      }
-      .clock {
-        font-size: 0.8em;
-      }
-      .week-navigation button {
-        padding: 4px 8px;
-        font-size: 11px;
-      }
-      .controls button, .controls select {
-        padding: 4px 6px;
-        font-size: 11px;
-      }
-      table th, table td {
-        padding: 4px;
-        font-size: 10px;
-        min-width: 40px;
-      }
-      .modal-content {
-        padding: 12px;
-      }
-      .modal-content input, .modal-content select {
         padding: 6px;
       }
+      header h1 {
+        font-size: 1.28em; /* 20% reduction from 1.6em */
+      }
+      .clock {
+        font-size: 0.64em; /* 20% reduction from 0.8em */
+      }
+      .week-navigation button {
+        padding: 3px 6px; /* Reduced from 4px 8px */
+        font-size: 9px;    /* Reduced from 11px */
+      }
+      .controls button, .controls select {
+        padding: 3px 5px;  /* Reduced from 4px 6px */
+        font-size: 9px;    /* Reduced from 11px */
+      }
+      table th, table td {
+        padding: 3px;      /* Reduced from 4px */
+        font-size: 8px;    /* Reduced from 10px */
+        min-width: 32px;   /* Reduced from 40px */
+      }
+      .modal-content {
+        padding: 10px;     /* Reduced from 12px */
+      }
+      .modal-content input, .modal-content select {
+        padding: 5px;      /* Reduced from 6px */
+      }
       .modal-content button.submit-btn {
-        padding: 8px;
-        font-size: 14px;
+        padding: 6px;      /* Reduced from 8px */
+        font-size: 11px;   /* Reduced from 14px */
       }
     }
   </style>
