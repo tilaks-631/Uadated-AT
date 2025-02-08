@@ -205,33 +205,33 @@
         padding: 6px;
       }
       header h1 {
-        font-size: 1.28em; /* 20% reduction from 1.6em */
+        font-size: 1.28em;
       }
       .clock {
-        font-size: 0.64em; /* 20% reduction from 0.8em */
+        font-size: 0.64em;
       }
       .week-navigation button {
-        padding: 3px 6px; /* Reduced from 4px 8px */
-        font-size: 9px;    /* Reduced from 11px */
+        padding: 3px 6px;
+        font-size: 9px;
       }
       .controls button, .controls select {
-        padding: 3px 5px;  /* Reduced from 4px 6px */
-        font-size: 9px;    /* Reduced from 11px */
+        padding: 3px 5px;
+        font-size: 9px;
       }
       table th, table td {
-        padding: 3px;      /* Reduced from 4px */
-        font-size: 8px;    /* Reduced from 10px */
-        min-width: 32px;   /* Reduced from 40px */
+        padding: 3px;
+        font-size: 8px;
+        min-width: 32px;
       }
       .modal-content {
-        padding: 10px;     /* Reduced from 12px */
+        padding: 10px;
       }
       .modal-content input, .modal-content select {
-        padding: 5px;      /* Reduced from 6px */
+        padding: 5px;
       }
       .modal-content button.submit-btn {
-        padding: 6px;      /* Reduced from 8px */
-        font-size: 11px;   /* Reduced from 14px */
+        padding: 6px;
+        font-size: 11px;
       }
     }
   </style>
@@ -249,6 +249,7 @@
     </header>
     
     <div class="controls">
+      <button id="toggleEditBtn">Enable Edit Mode</button>
       <button id="addWorkerBtn">Add Worker</button>
       <button id="addCategoryBtn">Add Category</button>
       <select id="filterCategory">
@@ -343,6 +344,7 @@
     let categories = [];
     let historyStack = [];
     let currentWeekOffset = 0; // 0 means current week
+    let isEditMode = false; // Attendance marking allowed only in edit mode
     // Global array to store the computed date objects for each day header
     let weekDateObjects = [];
     
@@ -398,6 +400,11 @@
       document.getElementById('clock').innerText = now.toLocaleString();
     }
     setInterval(updateClock, 1000);
+    // Toggle Edit Mode Button
+    document.getElementById('toggleEditBtn').addEventListener('click', () => {
+      isEditMode = !isEditMode;
+      document.getElementById('toggleEditBtn').innerText = isEditMode ? "Disable Edit Mode" : "Enable Edit Mode";
+    });
     // Week Navigation
     document.getElementById('prevWeek').addEventListener('click', () => {
       currentWeekOffset--;
@@ -506,9 +513,10 @@
           // Set initial style based on current state
           let state = worker.attendance[weekKey][i];
           setCellStyle(td, state);
-          // Define handler to cycle attendance state (supports click and touchstart)
+          // Define handler to cycle attendance state (only if edit mode enabled)
           const attendanceHandler = function(e) {
             e.preventDefault();
+            if(!isEditMode) return; // Only allow marking if Edit Mode is enabled
             pushHistory();
             const currentState = worker.attendance[weekKey][i];
             let newState;
